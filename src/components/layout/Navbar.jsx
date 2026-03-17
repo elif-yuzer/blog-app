@@ -4,10 +4,12 @@ import {  selectCurrentUser } from "../../features/auth/authSlice"
 
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { PiPinterestLogo } from "react-icons/pi"
+import useAuthCall from "../../hooks/useAuthCall"
 
 
 const Navbar = () => {
   const currentUser=useSelector(selectCurrentUser)
+  const {signOut}=useAuthCall()
 
   return (
     <div className="navbar text-brand font-header tracking-wide  bg-background shadow-sm sticky top-0 z-50">
@@ -64,7 +66,7 @@ const Navbar = () => {
             <Link to="/sign-up" className="btn btn-ghost btn-sm">Sign Up</Link>
           </div>
         ) : (
-          /* Giriş yapılmışsa — dropdown */
+          
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -94,7 +96,7 @@ const Navbar = () => {
           </div>
         )}
 
-        {/* Mobil menü */}
+        
         <div className="dropdown dropdown-end md:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
            

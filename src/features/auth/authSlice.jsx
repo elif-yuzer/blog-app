@@ -21,7 +21,11 @@ export const authSlice = createSlice({
         const { email, username, isAdmin, firstName, lastName } = payload.data;
         state.currentUser = { email, username, isAdmin, firstName, lastName };
       }
-      state.token = payload.token;
+
+
+
+      state.token = payload.bearer?.accessToken ?? payload.token
+      console.log(state.token);
     },
     cleanAuth: (state) => {
       state.currentUser = null;

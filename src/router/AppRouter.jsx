@@ -21,6 +21,7 @@ import BlogNew from "../pages/admin/BlogNew"
 import Comments from "../pages/admin/Comments"
 import Categories from "../pages/admin/Categories"
 import UsersPage from "../pages/admin/UsersPage"
+import Navbar from "../components/layout/Navbar"
 
 export const router = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
       {
         element: <AdminLayout />,
         children: [
-          { index: true, element: <Dashboard /> },
+          { index: true, element: <Navbar /> },
           { path: "blog-edit/:id", element: <BlogEdit /> },
           { path: "blog-new", element: <BlogNew /> },
           { path: "comments", element: <Comments /> },

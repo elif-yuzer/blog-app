@@ -13,13 +13,18 @@ const SignIn = () => {
     formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm({
-    resolver: zodResolver(signInSchema)
+    resolver: zodResolver(signInSchema),
+    /*     defaultValues: {
+       username: "",
+       password: "",
+     }, */
   });
+  
 
   async function onSubmit(userCredentials) {
     await signIn(userCredentials);
   }
-
+  
   return (
     <>
       <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-background">
@@ -43,11 +48,11 @@ const SignIn = () => {
                   name="username"
                   type="text"
                   required
-                  autoComplete="email"
+
                   className="block w-full rounded-md border border-[#D8D1C7] bg-[#FCFAF7] px-3 py-2 text-base text-[#2B2B2B] outline-none placeholder:text-[#9C948A] focus:border-brand sm:text-sm/6"
                 />
-                {errors.username?.type === "required" && (
-                  <p role="alert">First name is required</p>
+                {errors.username && (
+                  <p className="text-red-500 text-xs mt-1">{errors.username.message}</p>
                 )}
               </div>
             </div>
@@ -81,12 +86,12 @@ const SignIn = () => {
 
             <div>
               <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="flex w-full justify-center rounded-md bg-brand px-3 py-2 text-sm font-semibold text-[#F8F5F0] hover:bg-[#3C4A41]"
-                >
+                type="submit"
+                disabled={isSubmitting}
+                className="flex w-full justify-center rounded-md bg-brand px-3 py-2 text-sm font-semibold text-[#F8F5F0] hover:bg-[#3C4A41]"
+              >
                 {isSubmitting ? "Signing in..." : "Sign in"}
-                </button>
+              </button>
             </div>
           </form>
 

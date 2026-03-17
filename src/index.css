@@ -1,2 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
+ 
+
+
+@theme {
+  --font-body: Inter, sans-serif;
+  --font-header: Manrope, sans-serif;
+
+  --color-background: #F5F1EB;
+  --color-brand: #2F3A32;
+}
+
+body {
+  background-color: #F5F1EB;
+  color: #2B2B2B;
+}
+ 

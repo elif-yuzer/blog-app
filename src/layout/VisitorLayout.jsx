@@ -6,14 +6,14 @@ import Footer from '../components/layout/Footer'
 
 const VisitorLayout = () => {
   return (
-      <>
+      <div >
       <Navbar />
   
       <main className="min-h-screen">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

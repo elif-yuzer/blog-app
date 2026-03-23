@@ -1,24 +1,25 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit"
 import authReducer from "../features/auth/authSlice"
-import blogReducer from "../features/blogs/blogSlice"
 import { persistStore, persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist"
+import blogReducer from '../features/blog/blogSlice'
 
 const persistConfig = {
   key: "blog-app",
   storage,
   whitelist: ["auth"],  // SADECE auth persist edilir
-                        // blog her seferinde API'den çekilir
+                        // dıger degısen degerler cekılır
 }
 
-// Tüm reducer'ları birleştir
+
 const rootReducer = combineReducers({
-  auth: authReducer,  // state.auth
-  blog: blogReducer,  // state.blog
+  auth: authReducer,  
+  blog:blogReducer,
+  
 })
 
-// rootReducer'ı persist ile sar
+
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
